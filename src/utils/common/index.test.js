@@ -1,4 +1,4 @@
-import { getPlatform } from './utils';
+import { getPlatform } from '.';
 
 describe('should return desktop or mobile accordingly', () => {
     // Desktop platforms
