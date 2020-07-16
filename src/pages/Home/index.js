@@ -11,18 +11,19 @@ const Home = () => {
     useEffect(() => {
         setStatus('pending');
 
-        fetch(APIURL, {
-            method: 'GET',
-        })
-            .then(r => r.json())
-            .then(({ items }) => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch(APIURL);
+                const { items } = await res.json();
                 setData(items);
                 setStatus('resolved');
-            })
-            .catch(({ message }) => {
+            } catch (message) {
                 setStatus('rejected');
-                setError(message);
-            });
+                setError(message.error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     if (status === 'rejected') {
