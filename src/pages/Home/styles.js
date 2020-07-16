@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { getSpacing, colors, breakpoints } from '../../utils/styles';
+import { getSpacing, getFontSize, colors, breakpoints, fontFamilies } from '../../utils/styles';
 
 const header = css`
     background-color: ${colors.white};
@@ -20,8 +20,33 @@ const main = css`
     width: calc(100% - ${getSpacing(4)});
     margin: 0 auto;
 
+    .filters {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: ${getSpacing(2)};
+
+        &__keyword-input {
+            border: 1px solid ${colors.mediumGray};
+            font-family: ${fontFamilies.main};
+            font-size: ${getFontSize(14)};
+            margin-bottom: ${getSpacing(1)};
+            padding: ${getSpacing(1)};
+        }
+    }
+
     @media (min-width: ${breakpoints.tabletWidth}) {
         max-width: ${breakpoints.maxDesktopWidth};
+
+        .filters {
+            align-content: center;
+            align-items: center;
+            flex-direction: row;
+    
+            &__keyword-input {
+                flex-basis: 25%;
+                margin: 0 ${getSpacing(4)} 0 0;
+            }
+        }
     }
     
     @media (min-width: ${breakpoints.desktopWidth}) {

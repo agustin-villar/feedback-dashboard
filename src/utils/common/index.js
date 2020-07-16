@@ -4,7 +4,7 @@ function getPlatform(platformString) {
 }
 
 function filterDataByComment(keyword, data) {
-    return data.filter(({ comment }) => comment.search(keyword) > -1);
+    return data.filter(({ comment }) => comment.toLowerCase().search(keyword.toLowerCase()) > -1);
 }
 
 function filterDataByRating(ratings, data) {

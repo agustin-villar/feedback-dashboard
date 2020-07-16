@@ -6,6 +6,7 @@ const dotSize = '28px';
 const styles = css`
     align-content: center;
     background-color: ${colors.blue};
+    border: 1px solid ${colors.blue};
     border-radius: 100%;
     box-sizing: border-box;
     color: ${colors.white};

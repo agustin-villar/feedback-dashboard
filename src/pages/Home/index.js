@@ -17,17 +17,20 @@ const Home = () => {
                 <h1 className='header__headline'>Dashboard</h1>
             </header>
             <main css={main}>
-                <input
-                    type='text'
-                    placeholder='Search here!'
-                    onChange={e => updateFilters({ keyword: e.target.value })}
-                />
-                <RatingFilter onUpdateFilter={filter => updateFilters(filter)} />
+                <div className="filters">
+                    <input
+                        className="filters__keyword-input"
+                        type="text"
+                        placeholder="Search here!"
+                        onChange={e => updateFilters({ keyword: e.target.value })}
+                    />
+                    <RatingFilter onUpdateFilter={filter => updateFilters(filter)} />
+                </div>
                 <FeedbackTable filters={filters} />
             </main>
             <footer></footer>
         </>
     );
-}
+};
 
 export default Home;

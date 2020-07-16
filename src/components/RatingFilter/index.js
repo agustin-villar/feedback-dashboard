@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import 'styled-components/macro';
+import styles from './styles';
 
 const higherRank = 5;
 
@@ -26,14 +28,21 @@ const RatingFilter = ({ onUpdateFilter }) => {
     while (i < higherRank) {
         i += 1;
         buttons.push(
-            <button value={i} onClick={e => updateRating(parseInt(e.target.value, 10))}>
+            <button
+                className="ratingFilter__button"
+                value={i}
+                onClick={e => {
+                    updateRating(parseInt(e.target.value, 10));
+                    e.target.classList.toggle('ratingFilter__button--active');
+                }}
+            >
                 {i}
             </button>,
         );
     }
 
     return (
-        <div>
+        <div css={styles}>
             {buttons}
         </div>
     );

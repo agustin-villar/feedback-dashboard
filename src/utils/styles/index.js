@@ -5,6 +5,7 @@ const breakpoints = {
 };
 
 const colors = {
+    background: '#eef3f7',
     black: '#000',
     darkGray: '#53595d',
     mediumGray: '#d0d5da',
@@ -13,8 +14,12 @@ const colors = {
     blue: '#06A1D0',
 };
 
+const fontFamilies = {
+    main: '"Open Sans", "Arial", "Helvetica", sans-serif',
+};
+
 const getSpacing = ratio => `${ratio * 8}px`;
 
 const getFontSize = (size, base = 16) => `${size / base}rem`;
 
-export { getSpacing, breakpoints, colors, getFontSize };
+export { getSpacing, breakpoints, colors, getFontSize, fontFamilies };
