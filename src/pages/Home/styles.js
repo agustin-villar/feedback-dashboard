@@ -10,6 +10,10 @@ const header = css`
     justify-content: center;
     margin-bottom: ${getSpacing(2)};
     padding: ${getSpacing(2)};
+
+    @media (min-width: ${breakpoints.tabletWidth}) {
+        margin-bottom: ${getSpacing(4)};
+    }
 `;
 
 const main = css`

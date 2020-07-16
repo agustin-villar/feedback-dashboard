@@ -6,6 +6,8 @@ import { getPlatform } from '../../utils/common';
 
 const APIURL = 'http://cache.usabilla.com/example/apidemo.json';
 
+const labels = ['Rating', 'Comment', 'Browser', 'Device', 'Platform'];
+
 const FeedbackTable = () => {
     const [status, setStatus] = useState('idle');
     const [data, setData] = useState(null);
@@ -39,7 +41,7 @@ const FeedbackTable = () => {
 
     if (status === 'resolved') {
         return (
-            <table css={styles}>
+            <table css={styles} labels={labels}>
                 <thead>
                     <tr>
                         <td className="table__cell table__cell--head">Rating</td>
