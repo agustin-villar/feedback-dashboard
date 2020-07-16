@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import 'styled-components/macro';
 import styles from './styles';
 import Row from '../Row';
-import { getPlatform } from '../../utils/common';
+import { getPlatform, filterDataByComment, filterDataByRating } from '../../utils/common';
 
 const APIURL = 'http://cache.usabilla.com/example/apidemo.json';
 
 const labels = ['Rating', 'Comment', 'Browser', 'Device', 'Platform'];
 
-const FeedbackTable = () => {
+const FeedbackTable = ({ filters }) => {
     const [status, setStatus] = useState('idle');
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const [filteredData, setFilteredData] = useState(null);
 
     useEffect(() => {
         setStatus('pending');
@@ -21,6 +22,7 @@ const FeedbackTable = () => {
                 const res = await fetch(APIURL);
                 const { items } = await res.json();
                 setData(items);
+                setFilteredData(items);
                 setStatus('resolved');
             } catch (message) {
                 setStatus('rejected');
@@ -30,6 +32,23 @@ const FeedbackTable = () => {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (data) {
+            const { keyword, rating } = filters;
+            let newFilteredData = [...data];
+
+            if (keyword) {
+                newFilteredData = filterDataByComment(keyword, newFilteredData);
+            }
+
+            if (rating && rating.length > 0) {
+                newFilteredData = filterDataByRating(rating, newFilteredData);
+            }
+
+            setFilteredData(newFilteredData);
+        }
+    }, [filters, data]);
 
     if (status === 'rejected') {
         return (<p>{error}</p>);
@@ -52,7 +71,7 @@ const FeedbackTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(row => {
+                    {filteredData.map(row => {
                         const { rating, comment, computed_browser: { Browser, Version, Platform }, id } = row;
                         return (
                             <Row

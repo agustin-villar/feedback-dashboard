@@ -5,7 +5,7 @@ import 'styled-components/macro';
 import styles from './styles';
 
 const RatingDot = ({ rating }) => (
-    <span css={styles}>{rating}</span>
+    <span css={styles} onClick={e => e.stopPropagation()}>{rating}</span>
 );
 
 RatingDot.propTypes = {

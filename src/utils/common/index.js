@@ -3,4 +3,18 @@ function getPlatform(platformString) {
     return platformRegex.test(platformString) ? 'Desktop' : 'Mobile';
 }
 
-export { getPlatform };
+function filterDataByComment(keyword, data) {
+    return data.filter(({ comment }) => comment.search(keyword) > -1);
+}
+
+function filterDataByRating(ratings, data) {
+    let filteredData = [];
+
+    ratings.forEach(value => {
+        filteredData = [...filteredData, ...data.filter(({ rating }) => value === rating)];
+    });
+
+    return filteredData;
+}
+
+export { getPlatform, filterDataByComment, filterDataByRating };
