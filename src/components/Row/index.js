@@ -1,12 +1,14 @@
 import React from 'react';
 
+import RatingDot from '../RatingDot';
+
 const Row = ({ rating, comment, browser, device, platform }) => (
-    <tr>
-        <td>{rating}</td>
-        <td>{comment}</td>
-        <td>{browser}</td>
-        <td>{device}</td>
-        <td>{platform}</td>
+    <tr className="table__row">
+        <td className='table__cell'><RatingDot rating={rating} /></td>
+        <td className='table__cell table__cell--left-align'>{comment}</td>
+        <td className='table__cell'>{browser}</td>
+        <td className='table__cell'>{device}</td>
+        <td className='table__cell'>{platform}</td>
     </tr>
 );
 

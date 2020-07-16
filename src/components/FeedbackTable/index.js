@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import 'styled-components/macro';
+import styles from './styles';
 import Row from '../Row';
 import { getPlatform } from '../../utils/common';
 
@@ -37,14 +39,14 @@ const FeedbackTable = () => {
 
     if (status === 'resolved') {
         return (
-            <table>
+            <table css={styles}>
                 <thead>
                     <tr>
-                        <td>Rating</td>
-                        <td>Comment</td>
-                        <td>Browser</td>
-                        <td>Device</td>
-                        <td>Platform</td>
+                        <td className="table__cell table__cell--head">Rating</td>
+                        <td className="table__cell table__cell--head table__cell--left-align">Comment</td>
+                        <td className="table__cell table__cell--head">Browser</td>
+                        <td className="table__cell table__cell--head">Device</td>
+                        <td className="table__cell table__cell--head">Platform</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +57,7 @@ const FeedbackTable = () => {
                                 key={id}
                                 rating={rating}
                                 comment={comment}
-                                browser={`${Browser} ${Version}`}
+                                browser={`${Browser}\n${Version}`}
                                 device={Platform}
                                 platform={getPlatform(Platform)}
                             />

@@ -17,12 +17,12 @@ const colors = {
     black: '#000',
     darkGray: '#53595d',
     mediumGray: '#d0d5da',
-    lightGray: '#f7f7f7',
+    lightGray: '#f0f0f0',
     white: '#fff',
     blue: '#06A1D0',
 };
 
-const getSpacing = ratio => `${ratio * 0.8}px`;
+const getSpacing = ratio => `${ratio * 8}px`;
 
 const getFontSize = (size, base = 16) => `${size / base}rem`;
 
