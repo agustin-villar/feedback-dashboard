@@ -8,13 +8,7 @@ function filterDataByComment(keyword, data) {
 }
 
 function filterDataByValues(values, criteria, data) {
-    let filteredData = [];
-
-    values.forEach(value => {
-        filteredData = [...filteredData, ...data.filter(item => value === item[criteria])];
-    });
-
-    return filteredData;
+    return data.filter(item => !values.includes(item[criteria]));
 }
 
 function getUniqueFilterValues(array, value) {

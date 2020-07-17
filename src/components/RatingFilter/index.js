@@ -22,7 +22,8 @@ const RatingFilter = ({ onUpdateFilter }) => {
         i += 1;
         buttons.push(
             <button
-                className="ratingFilter__button"
+                key={i}
+                className="ratingFilter__button ratingFilter__button--active"
                 value={i}
                 onClick={e => {
                     updateRating(parseInt(e.target.value, 10));

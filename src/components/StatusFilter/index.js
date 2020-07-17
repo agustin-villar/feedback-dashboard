@@ -18,7 +18,8 @@ const StatusFilter = ({ onUpdateFilter }) => {
         <div css={styles}>
             {statusValues.map(status => (
                 <button
-                    className={`statusFilter__button statusFilter__button--${status} `}
+                    key={status}
+                    className={`statusFilter__button statusFilter__button--active statusFilter__button--${status}`}
                     value={status}
                     onClick={e => {
                         updateStatus(status);

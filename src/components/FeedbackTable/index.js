@@ -43,11 +43,11 @@ const FeedbackTable = ({ filters }) => {
                 newFilteredData = filterDataByComment(keyword, newFilteredData);
             }
 
-            if (rating && rating.length > 0) {
+            if (rating) {
                 newFilteredData = filterDataByValues(rating, 'rating', newFilteredData);
             }
 
-            if (status && status.length > 0) {
+            if (status) {
                 newFilteredData = filterDataByValues(status, 'status', newFilteredData);
             }
 
