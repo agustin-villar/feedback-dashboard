@@ -3,6 +3,7 @@ import 'styled-components/macro';
 import { main, header } from './styles';
 import FeedbackTable from '../../components/FeedbackTable';
 import RatingFilter from '../../components/RatingFilter';
+import StatusFilter from '../../components/StatusFilter';
 
 const Home = () => {
     const [filters, setFilters] = useState({});
@@ -25,6 +26,7 @@ const Home = () => {
                         onChange={e => updateFilters({ keyword: e.target.value })}
                     />
                     <RatingFilter onUpdateFilter={filter => updateFilters(filter)} />
+                    <StatusFilter onUpdateFilter={filter => updateFilters(filter)} />
                 </div>
                 <FeedbackTable filters={filters} />
             </main>

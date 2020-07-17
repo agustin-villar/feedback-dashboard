@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import 'styled-components/macro';
 import styles from './styles';
 
@@ -46,6 +47,10 @@ const RatingFilter = ({ onUpdateFilter }) => {
             {buttons}
         </div>
     );
+};
+
+RatingFilter.propTypes = {
+    onUpdateFilter: PropTypes.func.isRequired,
 };
 
 export default RatingFilter;

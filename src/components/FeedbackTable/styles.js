@@ -29,6 +29,10 @@ const styles = ({ labels }) => {
                 &--left-align {
                     text-align: left;
                 }
+
+                &--empty {
+                    color: ${colors.mediumGray};
+                }
             }
         }
         

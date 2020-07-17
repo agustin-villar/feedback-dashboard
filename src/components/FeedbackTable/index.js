@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import 'styled-components/macro';
-import styles from './styles';
+
+import { getPlatform, filterDataByComment, filterDataByRating, filterDataByStatus } from '../../utils/common';
 import Row from '../Row';
-import { getPlatform, filterDataByComment, filterDataByRating } from '../../utils/common';
+import styles from './styles';
 
 const APIURL = 'http://cache.usabilla.com/example/apidemo.json';
-
 const labels = ['Rating', 'Comment', 'Browser', 'Device', 'Platform'];
 
 const FeedbackTable = ({ filters }) => {
-    const [status, setStatus] = useState('idle');
-    const [data, setData] = useState(null);
+    const [loadStatus, setLoadStatus] = useState('idle');
     const [error, setError] = useState(null);
+    const [data, setData] = useState(null);
     const [filteredData, setFilteredData] = useState(null);
 
     useEffect(() => {
-        setStatus('pending');
+        setLoadStatus('pending');
 
         const fetchData = async () => {
             try {
@@ -23,9 +24,9 @@ const FeedbackTable = ({ filters }) => {
                 const { items } = await res.json();
                 setData(items);
                 setFilteredData(items);
-                setStatus('resolved');
+                setLoadStatus('resolved');
             } catch (message) {
-                setStatus('rejected');
+                setLoadStatus('rejected');
                 setError(message.error);
             }
         };
@@ -35,7 +36,7 @@ const FeedbackTable = ({ filters }) => {
 
     useEffect(() => {
         if (data) {
-            const { keyword, rating } = filters;
+            const { keyword, rating, status } = filters;
             let newFilteredData = [...data];
 
             if (keyword) {
@@ -46,19 +47,23 @@ const FeedbackTable = ({ filters }) => {
                 newFilteredData = filterDataByRating(rating, newFilteredData);
             }
 
+            if (status && status.length > 0) {
+                newFilteredData = filterDataByStatus(status, newFilteredData);
+            }
+
             setFilteredData(newFilteredData);
         }
     }, [filters, data]);
 
-    if (status === 'rejected') {
+    if (loadStatus === 'rejected') {
         return (<p>{error}</p>);
     }
 
-    if (status === 'pending' || status === 'idle') {
+    if (loadStatus === 'pending' || loadStatus === 'idle') {
         return (<p>loading...</p>);
     }
 
-    if (status === 'resolved') {
+    if (loadStatus === 'resolved') {
         return (
             <table css={styles} labels={labels}>
                 <thead>
@@ -90,6 +95,10 @@ const FeedbackTable = ({ filters }) => {
     }
 
     return null;
+};
+
+FeedbackTable.propTypes = {
+    filters: PropTypes.shape().isRequired,
 };
 
 export default FeedbackTable;

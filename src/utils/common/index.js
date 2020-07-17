@@ -17,4 +17,14 @@ function filterDataByRating(ratings, data) {
     return filteredData;
 }
 
-export { getPlatform, filterDataByComment, filterDataByRating };
+function filterDataByStatus(statuses, data) {
+    let filteredData = [];
+
+    statuses.forEach(value => {
+        filteredData = [...filteredData, ...data.filter(({ status }) => value === status)];
+    });
+
+    return filteredData;
+}
+
+export { getPlatform, filterDataByComment, filterDataByRating, filterDataByStatus };

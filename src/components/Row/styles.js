@@ -3,7 +3,7 @@ import { colors, getFontSize, getSpacing } from '../../utils/styles';
 
 const dotSize = '28px';
 
-const styles = css`
+const ratingDotStyles = css`
     align-content: center;
     background-color: ${colors.blue};
     border: 1px solid ${colors.blue};
@@ -18,4 +18,4 @@ const styles = css`
     width: ${dotSize};
 `;
 
-export default styles;
+export { ratingDotStyles };
