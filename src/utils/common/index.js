@@ -7,24 +7,26 @@ function filterDataByComment(keyword, data) {
     return data.filter(({ comment }) => comment.toLowerCase().search(keyword.toLowerCase()) > -1);
 }
 
-function filterDataByRating(ratings, data) {
+function filterDataByValues(values, criteria, data) {
     let filteredData = [];
 
-    ratings.forEach(value => {
-        filteredData = [...filteredData, ...data.filter(({ rating }) => value === rating)];
+    values.forEach(value => {
+        filteredData = [...filteredData, ...data.filter(item => value === item[criteria])];
     });
 
     return filteredData;
 }
 
-function filterDataByStatus(statuses, data) {
-    let filteredData = [];
+function getUniqueFilterValues(array, value) {
+    const valuesCollection = new Set(array);
 
-    statuses.forEach(value => {
-        filteredData = [...filteredData, ...data.filter(({ status }) => value === status)];
-    });
+    if (valuesCollection.has(value)) {
+        valuesCollection.delete(value);
+    } else {
+        valuesCollection.add(value);
+    }
 
-    return filteredData;
+    return Array.from(valuesCollection);
 }
 
-export { getPlatform, filterDataByComment, filterDataByRating, filterDataByStatus };
+export { getPlatform, filterDataByComment, filterDataByValues, getUniqueFilterValues };

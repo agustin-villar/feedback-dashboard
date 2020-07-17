@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import 'styled-components/macro';
 import styles from './styles';
+import { getUniqueFilterValues } from '../../utils/common';
 
 const higherRank = 5;
 
@@ -9,16 +10,7 @@ const RatingFilter = ({ onUpdateFilter }) => {
     const [filter, setFilter] = useState([]);
 
     function updateRating(value) {
-        const newFilter = new Set(filter);
-
-        if (newFilter.has(value)) {
-            newFilter.delete(value);
-        } else {
-            newFilter.add(value);
-        }
-
-        const arrayFromNewFilter = Array.from(newFilter);
-
+        const arrayFromNewFilter = getUniqueFilterValues(filter, value);
         setFilter(arrayFromNewFilter);
         onUpdateFilter({ rating: arrayFromNewFilter });
     }

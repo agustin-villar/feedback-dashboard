@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import 'styled-components/macro';
 
-import { getPlatform, filterDataByComment, filterDataByRating, filterDataByStatus } from '../../utils/common';
+import { getPlatform, filterDataByComment, filterDataByValues } from '../../utils/common';
 import Row from '../Row';
 import styles from './styles';
 
@@ -44,11 +44,11 @@ const FeedbackTable = ({ filters }) => {
             }
 
             if (rating && rating.length > 0) {
-                newFilteredData = filterDataByRating(rating, newFilteredData);
+                newFilteredData = filterDataByValues(rating, 'rating', newFilteredData);
             }
 
             if (status && status.length > 0) {
-                newFilteredData = filterDataByStatus(status, newFilteredData);
+                newFilteredData = filterDataByValues(status, 'status', newFilteredData);
             }
 
             setFilteredData(newFilteredData);
