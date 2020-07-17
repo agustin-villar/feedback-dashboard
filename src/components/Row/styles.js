@@ -18,4 +18,37 @@ const ratingDotStyles = css`
     width: ${dotSize};
 `;
 
-export { ratingDotStyles };
+const commentStyles = css`
+    .comment-content {
+        margin-right: ${getSpacing(1)}
+    }
+
+    .label {
+        background-color: ${colors.darkGray};
+        border-radius: 4px;
+        color: ${colors.white};
+        display: inline-block;
+        font-size: ${getFontSize(10)};
+        line-height: 1.2;
+        margin-right: ${getSpacing(0.5)};
+        padding: ${getSpacing(0.5)} ${getSpacing(1)};
+        
+        &--bug {
+            background-color: ${colors.bug};
+        }
+
+        &--suggestion {
+            background-color: ${colors.suggestion};
+        }
+
+        &--compliment {
+            background-color: ${colors.compliment};
+        }
+
+        &--question {
+            background-color: ${colors.question};
+        }
+    }
+`;
+
+export { ratingDotStyles, commentStyles };

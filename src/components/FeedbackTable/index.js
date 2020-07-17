@@ -7,7 +7,7 @@ import Row from '../Row';
 import styles from './styles';
 
 const APIURL = 'http://cache.usabilla.com/example/apidemo.json';
-const labels = ['Rating', 'Comment', 'Browser', 'Device', 'Platform'];
+const headings = ['Rating', 'Comment', 'Browser', 'Device', 'Platform'];
 
 const FeedbackTable = ({ filters }) => {
     const [loadStatus, setLoadStatus] = useState('idle');
@@ -15,9 +15,9 @@ const FeedbackTable = ({ filters }) => {
     const [data, setData] = useState(null);
     const [filteredData, setFilteredData] = useState(null);
 
-    const tableLabels = labels.map(label => {
-        const classNames = `table__cell table__cell--head ${label === 'Comment' ? 'table__cell--left-align' : ''}`;
-        return (<td key={label} className={classNames}>{label}</td>);
+    const tableHeadings = headings.map(heading => {
+        const classNames = `table__cell table__cell--head ${heading === 'Comment' ? 'table__cell--left-align' : ''}`;
+        return (<td key={heading} className={classNames}>{heading}</td>);
     });
 
     useEffect(() => {
@@ -70,15 +70,23 @@ const FeedbackTable = ({ filters }) => {
 
     if (loadStatus === 'resolved') {
         return (
-            <table css={styles} labels={labels}>
+            <table css={styles} labels={headings}>
                 <thead>
                     <tr>
-                        {tableLabels}
+                        {tableHeadings}
                     </tr>
                 </thead>
                 <tbody>
                     {filteredData.map(item => {
-                        const { rating, comment, computed_browser: { Browser, Version, Platform }, status, id } = item;
+                        const {
+                            rating,
+                            comment,
+                            computed_browser: { Browser, Version, Platform },
+                            status,
+                            id,
+                            labels,
+                        } = item;
+
                         return (
                             <Row
                                 key={id}
@@ -88,6 +96,7 @@ const FeedbackTable = ({ filters }) => {
                                 device={Platform}
                                 platform={getPlatform(Platform)}
                                 status={status}
+                                labels={labels}
                             />
                         );
                     })}

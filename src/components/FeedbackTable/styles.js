@@ -43,8 +43,6 @@ const styles = ({ labels }) => {
                 &--empty {
                     color: ${colors.mediumGray};
                 }
-
-                
             }
         }
         

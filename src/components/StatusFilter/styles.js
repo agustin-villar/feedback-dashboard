@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { getSpacing, colors } from '../../utils/styles';
+import { getSpacing, colors, getFontSize } from '../../utils/styles';
 
 const styles = css`
     margin-left: auto;
@@ -11,8 +11,9 @@ const styles = css`
             border-radius: 4px;
             color: ${colors.darkGray};
             cursor: pointer;
-            text-shadow: -1px -1px 0 ${colors.white};
+            font-size: ${getFontSize(11)};
             padding: ${getSpacing(1)} ${getSpacing(2)};
+            text-shadow: -1px -1px 0 ${colors.white};
 
             &--new {
                 border-radius: 4px 0 0 4px;

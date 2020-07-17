@@ -14,6 +14,10 @@ const colors = {
     blue: '#06A1D0',
     new: '#7be0ad',
     read: '#e0b0d5',
+    bug: '#f6511d',
+    suggestion: '#7fb800',
+    compliment: '#00a6ed',
+    question: '#5f4b66',
 };
 
 const fontFamilies = {
