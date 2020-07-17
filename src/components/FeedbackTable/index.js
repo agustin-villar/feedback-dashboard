@@ -20,6 +20,7 @@ const FeedbackTable = ({ filters }) => {
         return (<td key={heading} className={classNames}>{heading}</td>);
     });
 
+    // Load data on initial render
     useEffect(() => {
         setLoadStatus('pending');
 
@@ -39,6 +40,7 @@ const FeedbackTable = ({ filters }) => {
         fetchData();
     }, []);
 
+    // Filter data when filter criteria has changed
     useEffect(() => {
         if (data) {
             const { keyword, rating, status } = filters;
@@ -105,6 +107,7 @@ const FeedbackTable = ({ filters }) => {
         );
     }
 
+    // bypassing linter rule of consistent return
     return null;
 };
 

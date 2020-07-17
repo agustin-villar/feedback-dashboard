@@ -46,7 +46,7 @@ const styles = ({ labels }) => {
             }
         }
         
-        // Mobile breakpoints only
+        // Table layout for mobile breakpoints only
         @media (max-width: ${parseInt(breakpoints.tabletWidth, 10) - 1}px) {
             display: block;
             
@@ -70,6 +70,7 @@ const styles = ({ labels }) => {
                     }
 
                     &:before {
+                        color: ${colors.darkGray};
                         flex-basis: 30%;
                         flex-shrink: 0;
                         font-weight: 700;
