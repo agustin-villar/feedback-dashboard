@@ -15,6 +15,11 @@ const FeedbackTable = ({ filters }) => {
     const [data, setData] = useState(null);
     const [filteredData, setFilteredData] = useState(null);
 
+    const tableLabels = labels.map(label => {
+        const classNames = `table__cell table__cell--head ${label === 'Comment' ? 'table__cell--left-align' : ''}`;
+        return (<td key={label} className={classNames}>{label}</td>);
+    });
+
     useEffect(() => {
         setLoadStatus('pending');
 
@@ -68,16 +73,12 @@ const FeedbackTable = ({ filters }) => {
             <table css={styles} labels={labels}>
                 <thead>
                     <tr>
-                        <td className="table__cell table__cell--head">Rating</td>
-                        <td className="table__cell table__cell--head table__cell--left-align">Comment</td>
-                        <td className="table__cell table__cell--head">Browser</td>
-                        <td className="table__cell table__cell--head">Device</td>
-                        <td className="table__cell table__cell--head">Platform</td>
+                        {tableLabels}
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredData.map(row => {
-                        const { rating, comment, computed_browser: { Browser, Version, Platform }, status, id } = row;
+                    {filteredData.map(item => {
+                        const { rating, comment, computed_browser: { Browser, Version, Platform }, status, id } = item;
                         return (
                             <Row
                                 key={id}
