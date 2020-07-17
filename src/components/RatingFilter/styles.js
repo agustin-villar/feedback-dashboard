@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import ratingDotStyles from '../RatingDot/styles';
+import { ratingDotStyles } from '../Row/styles';
 import { colors, fontFamilies, getSpacing } from '../../utils/styles';
 
 const styles = css`
