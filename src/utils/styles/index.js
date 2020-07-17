@@ -24,8 +24,19 @@ const fontFamilies = {
     main: '"Open Sans", "Arial", "Helvetica", sans-serif',
 };
 
+/**
+ * Will return spacing dimensions based on the 8pt grid system
+ * @param {number} ratio - The number of times 8 should be multiplied by
+ * @returns {string} The desired dimension in pixels
+ */
 const getSpacing = ratio => `${ratio * 8}px`;
 
+/**
+ * Will return font sizes from pixel to rem units
+ * @param {number} size - The desired font size in pixels
+ * @param {number} base - The base size in which measures should be calculated
+ * @returns {string} The desired dimension in pixels
+ */
 const getFontSize = (size, base = 16) => `${size / base}rem`;
 
 export { getSpacing, breakpoints, colors, getFontSize, fontFamilies };
