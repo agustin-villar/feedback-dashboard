@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import 'styled-components/macro';
-import styles from './styles';
+
 import { getUniqueFilterValues } from '../../utils/common';
+import styles from './styles';
 
 const higherRank = 5;
 

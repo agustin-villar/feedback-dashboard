@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import 'styled-components/macro';
-import styles from './styles';
+
 import { getUniqueFilterValues } from '../../utils/common';
+import styles from './styles';
 
 const statusValues = ['new', 'read'];
 
@@ -29,6 +31,10 @@ const StatusFilter = ({ onUpdateFilter }) => {
             ))}
         </div>
     );
+};
+
+StatusFilter.propTypes = {
+    onUpdateFilter: PropTypes.func.isRequired,
 };
 
 export default StatusFilter;
