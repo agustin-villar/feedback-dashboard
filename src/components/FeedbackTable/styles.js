@@ -16,6 +16,15 @@ const styles = ({ labels }) => {
                 background-color: ${colors.white};
                 border-bottom: 1px solid ${colors.lightGray};
                 padding: ${getSpacing(1)};
+
+                &--new,
+                &--read {
+                    border-left: 3px solid ${colors.read};
+                }
+
+                &--new {
+                    border-left: 3px solid ${colors.new};
+                }
             }
 
             &__cell {
@@ -24,6 +33,7 @@ const styles = ({ labels }) => {
                 font-size: ${getFontSize(14)};
                 line-height: 1.5;
                 padding: ${getSpacing(0.5)} ${getSpacing(1)} 0;
+                position: relative;
                 text-align: left;
 
                 &--left-align {
@@ -33,6 +43,8 @@ const styles = ({ labels }) => {
                 &--empty {
                     color: ${colors.mediumGray};
                 }
+
+                
             }
         }
         
@@ -76,7 +88,18 @@ const styles = ({ labels }) => {
             margin-bottom: ${getSpacing(8)};
 
             .table {
+                &__row {
+                    &--new,
+                    &--read {
+                        border-left: 0;
+                    }
+
+                    &--new {
+                        border-left: 0;
+                    }
+                }
                 &__cell {
+                    background-color: transparent;
                     text-align: center;
                     padding: ${getSpacing(2)};
                     vertical-align: middle;
@@ -90,6 +113,24 @@ const styles = ({ labels }) => {
                         background: ${colors.darkGray};
                         color: ${colors.white};
                         font-size: ${getFontSize(16)};
+                    }
+
+                    &--new,
+                    &--read {
+                        &:after {
+                            border-left: 3px solid ${colors.read};
+                            content: '';
+                            height: 100%;
+                            left: 0;
+                            position: absolute;
+                            top: 0;
+                        }
+                    }
+
+                    &--new {
+                        &:after {
+                            border-left: 3px solid ${colors.new};
+                        }
                     }
                 }
             }

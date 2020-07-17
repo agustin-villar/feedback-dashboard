@@ -77,7 +77,7 @@ const FeedbackTable = ({ filters }) => {
                 </thead>
                 <tbody>
                     {filteredData.map(row => {
-                        const { rating, comment, computed_browser: { Browser, Version, Platform }, id } = row;
+                        const { rating, comment, computed_browser: { Browser, Version, Platform }, status, id } = row;
                         return (
                             <Row
                                 key={id}
@@ -86,6 +86,7 @@ const FeedbackTable = ({ filters }) => {
                                 browser={`${Browser}\n${Version}`}
                                 device={Platform}
                                 platform={getPlatform(Platform)}
+                                status={status}
                             />
                         );
                     })}

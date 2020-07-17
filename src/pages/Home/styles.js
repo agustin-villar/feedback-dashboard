@@ -22,11 +22,13 @@ const main = css`
 
     .filters {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         margin-bottom: ${getSpacing(2)};
 
         &__keyword-input {
             border: 1px solid ${colors.mediumGray};
+            flex-basis: 100%;
             font-family: ${fontFamilies.main};
             font-size: ${getFontSize(14)};
             margin-bottom: ${getSpacing(1)};
@@ -40,7 +42,6 @@ const main = css`
         .filters {
             align-content: center;
             align-items: center;
-            flex-direction: row;
     
             &__keyword-input {
                 flex-basis: 25%;

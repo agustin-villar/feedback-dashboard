@@ -12,6 +12,8 @@ const colors = {
     lightGray: '#f0f0f0',
     white: '#fff',
     blue: '#06A1D0',
+    new: '#7be0ad',
+    read: '#e0b0d5',
 };
 
 const fontFamilies = {
